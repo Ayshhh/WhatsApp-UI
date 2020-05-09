@@ -3,31 +3,42 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-            BarBackgroundColor="#075E54"
+             BarBackgroundColor="#075E54"
+             
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
              x:Class="WhatsApp.MainPage">
-  <!--Pages can be added as references or inline-->
+
+    
+
     <ContentPage IconImageSource="Camera" MinimumWidthRequest="10" />
 
     <ContentPage Title="CHATS">
 
+        
         <ContentPage.Content>
-            <StackLayout >
-                <CollectionView x:Name="WhatsApp" Margin="10">
+            <StackLayout>
+                <CollectionView x:Name="WhatsApp" Margin="10,0,0,0">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Grid  Margin="10">
+                            <Grid RowSpacing="0" HeightRequest="60">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="60" />
+                                    <RowDefinition Height="1"/>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <Frame BackgroundColor="Black"    CornerRadius="300">
-                                    <Image  Source="{Binding Picture}"     HeightRequest="35"    WidthRequest="35" />
+                                <Frame Padding="0,5,0,5" CornerRadius="370" BackgroundColor="Transparent" >
+                                    <controls:CircleImage Source="{Binding Picture}" Aspect="AspectFill"   HeightRequest="60"    WidthRequest="60"></controls:CircleImage>
                                 </Frame>
-
-                                <Label Grid.Column="1" Text="{Binding Name}" Margin="0,3,0,0" FontSize="20" TextColor="Black" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+                                <Label Grid.Column="1" Text="{Binding Name}" Margin="5,2,0,0" FontSize="20" TextColor="Black" FontAttributes="Bold" HorizontalTextAlignment="Start"  />
+                                <Label Grid.Column="1" Text="{Binding Chat}" Margin="5,30,0,0" FontSize="13" TextColor="SlateGray"  HorizontalTextAlignment="Start" />
+                                <Label Grid.Column="3" Text="{Binding Time}" Margin="0,0,10,0" FontSize="13" TextColor="SlateGray"  HorizontalTextAlignment="End" VerticalTextAlignment="Center"/>
+                                <BoxView  HeightRequest="1" BackgroundColor="LightGray" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3"/>
                             </Grid>
+                            
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
@@ -35,8 +46,60 @@
         </ContentPage.Content>
 
     </ContentPage>
-    
-    
-  <ContentPage Title="STATUS" />
+
+
+    <ContentPage Title="STATUS" >
+        <ContentPage.Content>
+
+            <StackLayout>
+                <Frame Margin="0,10,0,0" Padding="0,5,0,5" CornerRadius="370" BackgroundColor="Transparent" >
+                    <RelativeLayout>
+                        <controls:CircleImage Source="Manushi.png" Aspect="AspectFill"   HeightRequest="60" HorizontalOptions="Start"    WidthRequest="60" Margin="10,0,0,0"></controls:CircleImage>
+                        <controls:CircleImage Source="AddIcon.png" Aspect="AspectFill" HeightRequest="20" WidthRequest="20" HorizontalOptions="Start" Margin="53,38,0,0"></controls:CircleImage>
+                        <Label Text="My status" VerticalOptions="Center" HorizontalOptions="Center" TextColor="Black" FontAttributes="Bold" FontSize="20" Margin="85,0,0,0"/>
+                        <Label Text="Tap to add status update" TextColor="SlateGray" FontSize="13" Margin="85,36,0,0"/>
+                    </RelativeLayout>
+                </Frame>
+
+                <RelativeLayout>
+                    <BoxView BackgroundColor="#F1F1F1" HeightRequest="30" WidthRequest="450" />
+                    <Label Text="Recent Updates" TextColor="Gray" FontAttributes="Bold" Margin="10,5,0,0" />
+                    
+                </RelativeLayout>
+                
+                
+                
+                
+                <CollectionView x:Name="Status" Margin="10,0,0,0">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid RowSpacing="0" HeightRequest="65">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="65" />
+                                    <RowDefinition Height="1"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Frame Padding="3,3,3,3" CornerRadius="375" BackgroundColor="#075E54" >
+                                    <controls:CircleImage Source="{Binding Pic}" Aspect="AspectFill"   HeightRequest="60"    WidthRequest="60"></controls:CircleImage>
+                                </Frame>
+                                <Label Grid.Column="1" Text="{Binding Name1}" Margin="5,2,0,0" FontSize="20" TextColor="Black" FontAttributes="Bold" HorizontalTextAlignment="Start"  />
+                                <Label Grid.Column="1" Text="{Binding Time1}" Margin="5,30,0,0" FontSize="13" TextColor="SlateGray" HorizontalTextAlignment="Start" />
+                                
+                                <BoxView  HeightRequest="1" BackgroundColor="LightGray" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3"/>
+                            </Grid>
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </ContentPage.Content>
+
+    </ContentPage>
+      
   <ContentPage Title="CALLS" />
+    
 </TabbedPage>

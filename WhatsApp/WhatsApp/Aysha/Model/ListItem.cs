@@ -8,5 +8,7 @@ namespace WhatsApp.Aysha.Model
     {
         public string Picture { get; set; }
         public string Name { get; set; }
+        public string Chat { get; set; }
+        public string Time { get; set; }
     }
 }
